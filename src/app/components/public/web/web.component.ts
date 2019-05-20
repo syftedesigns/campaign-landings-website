@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material';
 import { CampaignService } from 'src/app/services/ads/campaign.service';
 import { NgForm } from '@angular/forms';
 import { WebModalComponent } from '../shared/web-modal/web-modal.component';
+import { ParticleStyle, ParticleConfigMobile, ParticleConfigDesktop } from 'src/app/enviroments/particles.config';
 
 @Component({
   selector: 'app-web',
@@ -13,6 +14,10 @@ import { WebModalComponent } from '../shared/web-modal/web-modal.component';
 })
 export class WebComponent implements OnInit, OnDestroy {
   Device: SizeDevice;
+  public ParticleStyle: object = {};
+  public particles: object | any = {};
+  public width: number = 100;
+  public height: number = 100;
   constructor(@Inject(DOCUMENT) private document: Document,
   public dialog: MatDialog, private _adService: CampaignService) { }
 
@@ -23,7 +28,13 @@ export class WebComponent implements OnInit, OnDestroy {
       width: window.innerWidth,
       height: window.innerHeight
     };
-    console.log(this.Device);
+    if (this.Device.width <= 480) {
+      this.ParticleStyle = ParticleStyle;
+      this.particles = ParticleConfigMobile;
+    } else {
+      this.ParticleStyle = ParticleStyle;
+      this.particles = ParticleConfigDesktop;
+    }
   }
   ngOnDestroy() {
     this.document.body.removeAttribute('class');

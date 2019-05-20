@@ -7,6 +7,7 @@ import { AngularMaterialModule } from '../../angular-material.module';
 import { FormsModule } from '@angular/forms';
 import { PublicRoutingModule } from './public.routes';
 import { WebComponent } from './web/web.component';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { WebComponent } from './web/web.component';
     RouterModule,
     AngularMaterialModule,
     FormsModule,
-    PublicRoutingModule
+    PublicRoutingModule,
+    ParticlesModule
   ],
   declarations: [
     WebComponent
